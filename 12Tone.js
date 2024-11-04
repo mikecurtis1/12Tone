@@ -4,7 +4,7 @@ const selectRandom = function(arr) {
 
 let pitches = [0,1,2,3,4,5,6,7,8,9,10,11];
 
-// 12! = 479,001,600
+// 12! = 479,001,600 combinations not accounting for certain duplicates
 
 const existingTone = function(row, tone) {
 	let existingTone = false;
