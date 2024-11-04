@@ -49,8 +49,21 @@ const outlinesTonal = function(row, tone) {
 	return bool;
 }
 
-// two P4 spans C-F & F♯-B
-const mapABC = ['=C','_D','=D','_E','=E','=F','^F','=G','^G','=A','^A','=B'];
+// ascending m2 M2 m3 M3 P4 A4 P5 m6 M6 m7 M7
+//const mapABC = ['=C','_D','=D','_E','=E','=F','^F','=G','_A','=A','_B','=B'];
+// descending m2 M2 m3 M6 P4 A4 P5 m6 M6 m7 M7
+//const mapABCInverted = ['=c','=B','_B','=A','_A','=G','_G','=F','=E','_E','=D','_D'];
+
+// C5 centered
+// ascending G4 to F♯5
+const mapABC = ['=G','_A','=A','_B','=B','=c','_d','=d','_e','=e','=f','^f'];
+// descending F5 to G♭4
+const mapABCInverted = ['=f','=e','_e','=d','_d','=c','=B','_B','=A','_A','=G','_G'];
+
+
+const expressABCInverted = function(row) {
+	return row.map((n) => mapABCInverted[n]).join(' ');
+};
 
 const expressABC = function(row) {
 	return row.map((n) => mapABC[n]).join(' ');
@@ -62,7 +75,9 @@ const invertRow = function(row) {
 
 const buildRow = function() {
 	let row = [];
-	row.push(selectRandom(pitches))
+	//row.push(selectRandom(pitches));
+	//row.push(0)
+	row.push(5)
 	let c = 1;
 	let next = selectRandom(pitches);
 	while ( row.length < 12 || c < 1000 ) {
